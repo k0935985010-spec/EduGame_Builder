@@ -1,0 +1,445 @@
+/* Base Variables & Theming */
+:root {
+    --bg-color: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-card: #333333;
+    --font-family: 'Noto Sans TC', sans-serif;
+}
+
+/* Theme: Ninja */
+body.theme-ninja {
+    --bg-color: #1a0a0a;
+    --bg-image: radial-gradient(circle at center, #2e1010 0%, #0a0202 100%);
+    --card-bg: linear-gradient(135deg, #e4d5b7 0%, #c4b087 100%);
+    --card-border: 4px solid #5a1212;
+    --card-radius: 4px;
+    --text-primary: #f0e6d2;
+    --text-card: #2c1a1a;
+    --accent-color: #b71c1c;
+    --btn-bg: #8b0000;
+    --btn-hover: #b71c1c;
+    --btn-text: #fff;
+    --modal-bg: rgba(20, 5, 5, 0.95);
+    background-color: var(--bg-color);
+    background-image: var(--bg-image);
+}
+
+/* Theme: Cyber */
+body.theme-cyber {
+    --bg-color: #050510;
+    --bg-image: 
+        linear-gradient(rgba(0, 255, 170, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 170, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    --card-bg: rgba(10, 25, 35, 0.85);
+    --card-border: 2px solid #00ffaa;
+    --card-radius: 0px;
+    --text-primary: #00ffcc;
+    --text-card: #00ffcc;
+    --accent-color: #00ffaa;
+    --btn-bg: rgba(0, 255, 170, 0.1);
+    --btn-hover: rgba(0, 255, 170, 0.3);
+    --btn-text: #00ffcc;
+    --modal-bg: rgba(5, 5, 15, 0.95);
+    --glow: 0 0 15px rgba(0, 255, 170, 0.4);
+    background-color: var(--bg-color);
+    background-image: var(--bg-image);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Theme: RPG */
+body.theme-rpg {
+    --bg-color: #4e342e;
+    --bg-image: radial-gradient(circle at center, #6d4c41 0%, #3e2723 100%);
+    --card-bg: #f4e8d1; /* Parchment look */
+    --card-border: 6px ridge #8d6e63;
+    --card-radius: 12px;
+    --text-primary: #ffe0b2;
+    --text-card: #3e2723;
+    --accent-color: #d84315;
+    --btn-bg: #6d4c41;
+    --btn-hover: #5d4037;
+    --btn-text: #fff;
+    --modal-bg: rgba(62, 39, 35, 0.95);
+    --glow: 0 4px 8px rgba(0,0,0,0.5);
+    background-color: var(--bg-color);
+    background-image: var(--bg-image);
+}
+
+/* Global Styles */
+body {
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    margin: 0;
+    min-height: 100vh;
+    transition: all 0.5s ease;
+    overflow-x: hidden;
+}
+
+/* Utilities */
+.hidden { display: none !important; }
+
+/* Full Screen Overlays */
+.full-screen-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-color);
+    z-index: 1000;
+    text-align: center;
+}
+
+/* Loader */
+.loader {
+    width: 60px; height: 60px;
+    border: 6px solid var(--text-primary);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    margin-bottom: 20px;
+}
+@keyframes rotation { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Maintenance */
+.warning-text {
+    font-size: 3rem;
+    color: #ff5252;
+    text-shadow: 0 0 10px rgba(255, 82, 82, 0.5);
+    margin-bottom: 20px;
+}
+
+/* Lobby Header */
+.lobby-header {
+    text-align: center;
+    padding: 40px 20px 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+.main-title {
+    font-size: 3.5rem;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+}
+.subtitle {
+    font-size: 1.5rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* Quest Grid */
+.quest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Quest Card */
+.quest-card {
+    background: var(--card-bg);
+    color: var(--text-card);
+    border: var(--card-border);
+    border-radius: var(--card-radius);
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: var(--glow, 0 5px 15px rgba(0,0,0,0.3));
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.quest-card:hover { transform: translateY(-10px); }
+
+.quest-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.quest-concept {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 15px 0;
+    text-align: center;
+    min-height: 2.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quest-difficulty {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+/* Button Styles */
+.action-btn {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: var(--card-border);
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: var(--card-radius);
+    width: 100%;
+}
+.action-btn:hover {
+    background: var(--btn-hover);
+    transform: scale(1.05);
+}
+
+body.theme-cyber .action-btn {
+    box-shadow: 0 0 10px rgba(0,255,170,0.2);
+}
+body.theme-cyber .action-btn:hover {
+    box-shadow: 0 0 20px rgba(0,255,170,0.6);
+}
+
+/* Completed Stamp */
+.stamp { display: none; }
+.quest-card.completed .stamp {
+    display: block;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-25deg);
+    color: #e53935;
+    border: 5px solid #e53935;
+    padding: 10px 25px;
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-radius: 10px;
+    pointer-events: none;
+    animation: stampIn 0.5s ease-out forwards;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    white-space: nowrap;
+}
+.quest-card.completed .accept-btn {
+    pointer-events: none;
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+
+@keyframes stampIn {
+    0% { transform: translate(-50%, -50%) scale(3) rotate(-35deg); opacity: 0; }
+    50% { transform: translate(-50%, -50%) scale(0.8) rotate(-15deg); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1) rotate(-25deg); opacity: 1; }
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: var(--modal-bg);
+    border: var(--card-border);
+    border-radius: var(--card-radius);
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    padding: 40px;
+    position: relative;
+    overflow-y: auto;
+    box-shadow: var(--glow, 0 10px 30px rgba(0,0,0,0.5));
+    animation: modalPopIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPopIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.close-btn:hover { color: var(--accent-color); }
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.modal-subject-display {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#modal-subject {
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+.subject-icon {
+    font-size: 2.5rem;
+}
+
+.story-container {
+    background: rgba(0,0,0,0.15);
+    padding: 25px;
+    border-radius: var(--card-radius);
+    margin-bottom: 30px;
+    font-size: 1.3rem;
+    line-height: 1.8;
+}
+
+.story-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.udl-btn {
+    width: auto;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent-color);
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.option-btn {
+    padding: 20px;
+    font-size: 1.4rem;
+    min-height: 80px;
+}
+
+/* Feedback & Interactions */
+.feedback {
+    text-align: center;
+    color: #ff5252;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    animation: fadeIn 0.3s;
+}
+
+.option-btn.error {
+    background: #ff5252 !important;
+    border-color: #d50000 !important;
+    color: white !important;
+}
+
+.shake {
+    animation: shake 0.4s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-15px); }
+    40%, 80% { transform: translateX(15px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Victory Screen */
+.victory-content {
+    background: var(--modal-bg);
+    padding: 50px;
+    border-radius: var(--card-radius);
+    border: var(--card-border);
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+}
+
+.slide-in-bottom {
+    animation: slideInBottom 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes slideInBottom {
+    0% { transform: translateY(100px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.victory-title {
+    font-size: 4rem;
+    color: #ffd700;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    margin-bottom: 30px;
+}
+
+.reward-box {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.reward-text {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+.exchange-notice {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+
+.highlight-text {
+    color: #ff5252;
+    font-weight: 900;
+    font-size: 2rem;
+}
+
+.back-btn {
+    font-size: 1.5rem;
+    padding: 15px 40px;
+    width: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .options-grid { grid-template-columns: 1fr; }
+    .main-title { font-size: 2.5rem; }
+    .quest-grid { grid-template-columns: 1fr; padding: 15px; }
+    .modal-content { padding: 20px; padding-top: 50px; }
+    .close-btn { top: 10px; right: 15px; }
+    .victory-title { font-size: 3rem; }
+    .exchange-notice { font-size: 1.4rem; }
+}

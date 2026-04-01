@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多重宇宙競技場</title>
+    <link rel="stylesheet" href="game.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="theme-rpg">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="full-screen-overlay">
+        <div class="loader"></div>
+        <h2 class="loading-text">宇宙連線中...</h2>
+    </div>
+
+    <!-- Maintenance Screen -->
+    <div id="maintenance-screen" class="full-screen-overlay hidden">
+        <div class="maintenance-box">
+            <h1 class="warning-text">⚠️ 系統維修保養中 ⚠️</h1>
+            <p>多重宇宙通道暫時關閉，請稍候再試。</p>
+        </div>
+    </div>
+
+    <!-- Game Lobby -->
+    <div id="game-lobby" class="hidden">
+        <header class="lobby-header">
+            <h1 class="main-title">多重宇宙競技場</h1>
+            <p class="subtitle">選擇你的懸賞任務，展開冒險！</p>
+        </header>
+        <main>
+            <div id="quest-board" class="quest-grid">
+                <!-- Quest Cards dynamically injected by JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Combat Modal -->
+    <div id="combat-modal" class="modal hidden">
+        <div class="modal-content">
+            <button id="close-modal" class="close-btn">&times;</button>
+            <div class="modal-header">
+                <div class="modal-subject-display">
+                    <span id="modal-icon" class="subject-icon">🎯</span>
+                    <h2 id="modal-subject">科目</h2>
+                </div>
+                <div class="stars" id="modal-difficulty">★★★</div>
+            </div>
+            
+            <div class="story-container">
+                <p id="modal-story">故事內容將載入於此...</p>
+                <div class="story-actions">
+                    <button id="read-aloud-btn" class="action-btn udl-btn">🔊 朗讀</button>
+                </div>
+            </div>
+            
+            <div id="feedback-msg" class="feedback hidden">遭遇陷阱！請重新思考！</div>
+            
+            <div id="options-container" class="options-grid">
+                <!-- Option buttons dynamically injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Victory Screen -->
+    <div id="victory-screen" class="full-screen-overlay hidden">
+        <div class="victory-content slide-in-bottom">
+            <h1 class="victory-title">任務完成！</h1>
+            <div class="reward-box">
+                <h2 id="reward-text" class="reward-text">獲得獎勵！</h2>
+            </div>
+            <div class="exchange-notice">
+                <p class="highlight-text">📸 請小組長截圖此畫面 📸</p>
+                <p>向獵人工會會長兌換實體獎勵！</p>
+            </div>
+            <button id="back-to-lobby-btn" class="action-btn back-btn">返回懸賞牆</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
