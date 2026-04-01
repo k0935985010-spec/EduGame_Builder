@@ -1,4 +1,4 @@
-﻿// 請填入GAS發布網址
+// 請填入GAS發布網址
 const GAS_URL = "https://script.google.com/macros/s/AKfycbw-xJUi8i1pc4qi5pjCR7N2zUtuo8jMPS034LOnNEMJuBpotVEeE7Y4bHE-juPCwiiaVQ/exec";
 
 // Global Game State
@@ -13,7 +13,7 @@ const subjectIcons = {
     '數學': '📐',
     '英語': '🔤',
     '自然': '🔬',
-    '社會': '🌍',
+    '社會': '🗺️',
     '預設': '🎯'
 };
 
@@ -95,7 +95,16 @@ function applyGameData(data) {
 
     // Apply Multiverse Theme
     if (data.settings.universe) {
-        currentUniverse = data.settings.universe;
+        const uName = data.settings.universe;
+        if (uName.includes('木葉')) {
+            currentUniverse = 'theme-ninja';
+        } else if (uName.includes('賽博')) {
+            currentUniverse = 'theme-cyber';
+        } else if (uName.includes('RPG') || uName.includes('台灣')) {
+            currentUniverse = 'theme-rpg';
+        } else {
+            currentUniverse = uName;
+        }
         document.body.className = currentUniverse; // Replace all classes with the theme class
     }
 
