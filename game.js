@@ -1,4 +1,4 @@
-// 請填入GAS發布網址
+﻿// 請填入GAS發布網址
 const GAS_URL = "https://script.google.com/macros/s/AKfycbw-xJUi8i1pc4qi5pjCR7N2zUtuo8jMPS034LOnNEMJuBpotVEeE7Y4bHE-juPCwiiaVQ/exec";
 
 // Global Game State
