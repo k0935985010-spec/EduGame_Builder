@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五年級出題挑戰基地</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1>🎮 五年級出題挑戰基地 🚀</h1>
+            <div class="subject-toggle">
+                <input type="radio" id="math" name="subject" value="math" checked>
+                <label for="math" class="toggle-btn math-btn">📐 數學挑戰</label>
+                <input type="radio" id="chinese" name="subject" value="chinese">
+                <label for="chinese" class="toggle-btn chinese-btn">📖 國語文偵探</label>
+                <input type="radio" id="science" name="subject" value="science">
+                <label for="science" class="toggle-btn science-btn">🧪 自然科學實驗室</label>
+                <input type="radio" id="social" name="subject" value="social">
+                <label for="social" class="toggle-btn social-btn">🗺️ 社會歷史調查局</label>
+                <input type="radio" id="english" name="subject" value="english">
+                <label for="english" class="toggle-btn english-btn">🗣️ 英語情境對話</label>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="form-section">
+                <!-- Section A -->
+                <section class="card section-a">
+                    <div class="card-header">
+                        <span class="step-icon">A</span>
+                        <h2>邏輯大師</h2>
+                        <span class="role-desc">- 設定核心觀念</span>
+                    </div>
+                    <div class="input-group" id="challenge-type-group" style="display: none;">
+                        <label for="challenge-type">🕵️ 挑戰類型（偵探任務）</label>
+                        <select id="challenge-type" class="detective-select">
+                            <option value="typo">🔍 字形幻術（改錯字）</option>
+                            <option value="polyphonic">🎧 聲波陷阱（多音字）</option>
+                            <option value="context">🧩 語境辨析（填入語詞/成語）</option>
+                        </select>
+                        <div id="challenge-hint" class="detective-hint" style="margin-top: 8px;"></div>
+                    </div>
+                    <div class="input-group" id="concept-group">
+                        <label id="concept-label" for="concept-input">核心觀念</label>
+                        <input type="text" id="concept-input" placeholder="例如：分數加法">
+                    </div>
+                    <div class="input-group" id="answer-group">
+                        <label id="answer-label" for="answer-input">正確答案</label>
+                        <input type="text" id="answer-input" placeholder="輸入正確答案">
+                    </div>
+                </section>
+
+                <!-- Section B -->
+                <section class="card section-b">
+                     <div class="card-header">
+                        <span class="step-icon">B</span>
+                        <h2>情境編劇</h2>
+                        <span class="role-desc">- 編寫故事</span>
+                    </div>
+                    <div class="input-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <label for="story-input" style="margin-bottom: 0;">題目情境</label>
+                            <button type="button" id="read-story-btn" title="朗讀故事內容" style="background: none; border: 1px solid #c7d2fe; cursor: pointer; font-size: 0.9em; padding: 4px 8px; border-radius: 4px; background-color: #e0e7ff; color: #4338ca; display: flex; align-items: center; gap: 4px; font-weight: bold; transition: background-color 0.2s;">🔊 朗讀故事</button>
+                        </div>
+                        <textarea id="story-input" rows="4" placeholder="請把題目包裝成一個有趣的冒險故事或案件..."></textarea>
+                    </div>
+                </section>
+
+                <!-- Section C -->
+                <section class="card section-c">
+                    <div class="card-header">
+                        <span class="step-icon">C</span>
+                        <h2>測試員</h2>
+                        <span class="role-desc">- 設計陷阱</span>
+                    </div>
+                    <p class="subtitle" id="section-c-subtitle">設計三個看起來很真實的錯誤選項！</p>
+                    <div class="input-group">
+                        <label id="wrong-1-label" for="wrong-1">陷阱選項 1</label>
+                        <input type="text" id="wrong-1" class="wrong-option" placeholder="錯誤選項 1">
+                    </div>
+                    <div class="input-group">
+                        <label id="wrong-2-label" for="wrong-2">陷阱選項 2</label>
+                        <input type="text" id="wrong-2" class="wrong-option" placeholder="錯誤選項 2">
+                    </div>
+                    <div class="input-group">
+                        <label id="wrong-3-label" for="wrong-3">陷阱選項 3</label>
+                        <input type="text" id="wrong-3" class="wrong-option" placeholder="錯誤選項 3">
+                    </div>
+                </section>
+
+                <button id="submit-btn" class="submit-btn">🚀 送交 AI 關主審核 🚀</button>
+            </div>
+
+            <div class="preview-section">
+                <!-- Preview Card -->
+                <div class="preview-card">
+                    <div class="preview-header">
+                        <h3>👀 遊戲畫面預覽 (開發中)</h3>
+                    </div>
+                    <div class="preview-body" id="preview-body">
+                        <div class="preview-top">
+                            <span id="preview-subject-badge" class="badge">📐 數學挑戰</span>
+                        </div>
+                        <h4 id="preview-concept">🎯 目標：等待輸入...</h4>
+                        <div class="preview-story-box">
+                            <p id="preview-story">故事內容將顯示在這裡...</p>
+                        </div>
+                        <div class="preview-options">
+                            <button class="preview-option correct-option-preview">
+                                <span class="opt-label">A</span> 
+                                <span class="opt-text" id="preview-correct">(正確答案)</span>
+                            </button>
+                            <button class="preview-option wrong-option-preview">
+                                <span class="opt-label">B</span> 
+                                <span class="opt-text" id="preview-wrong-1">(陷阱 1)</span>
+                            </button>
+                            <button class="preview-option wrong-option-preview">
+                                <span class="opt-label">C</span> 
+                                <span class="opt-text" id="preview-wrong-2">(陷阱 2)</span>
+                            </button>
+                            <button class="preview-option wrong-option-preview">
+                                <span class="opt-label">D</span> 
+                                <span class="opt-text" id="preview-wrong-3">(陷阱 3)</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
